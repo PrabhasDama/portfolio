@@ -4,12 +4,14 @@ A dark-first, product-led portfolio built with Next.js 16.3.5, React, TypeScript
 
 ## Run locally
 
+Use Node.js 22.18 or newer (Node.js 24 was used for validation).
+
 ```sh
 npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. Run `npm run lint`, `npm run typecheck`, and `npm run build` to validate. `npm run check` runs all three. The production build uses Next.js's supported webpack builder because Turbopack's CSS worker could not bind its local port in the execution environment. The development server uses Turbopack.
+Open http://127.0.0.1:3000. Run `npm run lint`, `npm run typecheck`, and `npm run build` to validate. `npm run check` runs all three plus the article-system tests. The production build uses Next.js's supported webpack builder because Turbopack's CSS worker could not bind its local port in the execution environment. The development server uses Turbopack.
 
 The production output is `out/`. Serve that directory with any static host; `next start` does not serve a static export. To use Vercel's server runtime and automatic image optimization, remove `output: "export"` and `images.unoptimized` from `next.config.ts`.
 
@@ -21,7 +23,7 @@ The production output is `out/`. Serve that directory with any static host; `nex
 - `data/capabilities.ts`: restrained technology categories based on the supplied CalTrack stack.
 - `lib/site.ts`: the actual private preview origin; a supplied `NEXT_PUBLIC_SITE_URL` takes precedence.
 
-Copy `.env.example` to `.env.local` and fill in real values. All listed variables are public build-time values, so never put secrets there. Rebuild after changing them. Unset contact/project links render as noninteractive “Soon” labels, not broken links. The resume action appears only when a real URL is supplied. The personal domain remains unset; preview metadata uses the registered preview URL.
+Your supplied email, GitHub, and LinkedIn links are configured in `data/profile.ts`. To override them, copy `.env.example` to `.env.local`. All listed variables are public build-time values, so never put secrets there. Rebuild after changing them. Unset project links render as noninteractive “Soon” labels, not broken links. The resume action appears only when a real URL is supplied. The personal domain remains unset; preview metadata uses the registered preview URL.
 
 Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before public launch, supply and verify the personal domain, real links, and project content, then rebuild. Sites access controls are separate from robots metadata; the initial deployment is owner-private.
 
@@ -32,6 +34,7 @@ Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before p
 - `/projects/mouse-telemetry/`
 - `/projects/campussync/`
 - `/projects/smartwaste/`
+- `/blog/` and `/blog/<article-slug>/` for published articles
 - `/sitemap.xml`, `/robots.txt`, and the custom 404 page
 
 ## Components
@@ -46,9 +49,13 @@ The navigation compacts on scroll without removing desktop links. Native disclos
 
 No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack artwork is a labeled conceptual workflow diagram. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
 
+## Writing articles
+
+Create a draft with `npm run post -- "Your article title"`, then edit the Markdown file under `content/articles/`. Preview drafts with `npm run dev`. Set `status: published` when ready, then rebuild and deploy. Drafts never enter production output. See [the writing guide](docs/writing.md) for the complete workflow.
+
 ## Next content pass
 
-1. Supply GitHub, LinkedIn, email, resume, and domain.
+1. Supply a resume and personal domain.
 2. Add real CalTrack screenshots, product/source links, dates, architecture, tradeoffs, and verified outcomes.
 3. Document Mouse Telemetry, CampusSync, and SmartWaste.
 4. Add verified experience records.

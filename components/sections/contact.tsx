@@ -4,7 +4,7 @@ import { profile } from "@/data/profile";
 export function Contact() {
   return (
     <section id="contact" className="contact-section section reveal">
-      <SectionHeading number="04" title="What’s next" />
+      <SectionHeading number="05" title="What’s next" />
       <div className="contact-content">
         <h2>
           Let’s build something

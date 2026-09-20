@@ -1965,3 +1965,450 @@ a:hover .link-arrow {
     padding: 10px 9px;
   }
 }
+
+/* Writing is an open editorial surface, with a quieter rhythm than projects. */
+.writing-section {
+  margin-top: 110px;
+}
+.writing-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 22px 0 32px;
+}
+.writing-intro h2 {
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.writing-intro p {
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 13px;
+  line-height: 1.7;
+}
+.writing-intro .text-link {
+  margin-top: 0;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.writing-empty {
+  display: flex;
+  align-items: center;
+  gap: 31px;
+  padding: 35px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.writing-empty-mark {
+  font-size: 46px;
+  letter-spacing: -0.07em;
+  color: #b4b0a8;
+  font-weight: 450;
+}
+.writing-empty-mark > span {
+  color: var(--accent);
+}
+.writing-empty p {
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.writing-empty div > span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 9px;
+  line-height: 1.6;
+}
+.article-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.article-list li {
+  border-top: 1px solid var(--border);
+}
+.article-list li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.article-row {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) 44px;
+  align-items: start;
+  gap: 35px;
+  padding: 32px 0;
+}
+.article-row-meta {
+  display: grid;
+  gap: 9px;
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 5px;
+}
+.article-row-meta > span:not(.draft-label) {
+  color: #97938d;
+}
+.article-row-copy h3 {
+  font-size: 25px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  transition: color 0.2s;
+  overflow-wrap: anywhere;
+}
+.article-row:hover h3 {
+  color: var(--accent);
+}
+.article-row-copy > p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 670px;
+}
+.article-topics {
+  display: flex;
+  gap: 8px 17px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--accent);
+}
+.article-row-copy .article-topics {
+  margin-top: 19px;
+}
+.draft-label {
+  color: var(--accent);
+  line-height: 1.5;
+}
+.blog-page,
+.article-page {
+  padding-top: 147px;
+}
+.blog-header {
+  padding: 61px 0 68px;
+}
+.blog-header h1 {
+  font-size: clamp(50px, 7vw, 87px);
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-top: 25px;
+}
+.blog-header h1 > span {
+  color: var(--accent);
+}
+.blog-header > p:last-child {
+  font-size: 25px;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+  color: var(--muted);
+  margin-top: 25px;
+}
+.blog-articles {
+  min-height: 310px;
+  padding-bottom: 90px;
+}
+.blog-page .writing-empty {
+  padding: 44px 0;
+}
+.article-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.article-header {
+  padding: 55px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+.article-header h1 {
+  font-size: clamp(40px, 4.6vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+  margin-top: 21px;
+  overflow-wrap: anywhere;
+}
+.article-description {
+  font-size: 21px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 22px;
+}
+.article-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 31px;
+}
+.article-byline > span:first-child {
+  color: var(--foreground);
+}
+.article-draft-notice {
+  font-size: 13px;
+  line-height: 1.6;
+  background: #29231a;
+  color: var(--accent);
+  border: 1px solid #514431;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+}
+.article-prose {
+  padding-top: 30px;
+  font-size: 18px;
+  line-height: 1.85;
+  color: #c5c1ba;
+  overflow-wrap: anywhere;
+}
+.article-prose > :first-child {
+  margin-top: 0;
+}
+.article-prose p {
+  margin: 24px 0;
+}
+.article-prose :is(h1, h2, h3, h4) {
+  color: var(--foreground);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  margin: 45px 0 20px;
+}
+.article-prose :is(h1, h2) {
+  font-size: 31px;
+}
+.article-prose h3 {
+  font-size: 24px;
+}
+.article-prose h4 {
+  font-size: 21px;
+}
+.article-prose :is(ul, ol) {
+  margin: 24px 0;
+  padding-left: 26px;
+}
+.article-prose ul {
+  list-style: disc;
+}
+.article-prose ol {
+  list-style: decimal;
+}
+.article-prose li {
+  padding-left: 5px;
+  margin: 8px 0;
+}
+.article-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.article-prose a:hover {
+  color: #f2dab7;
+}
+.article-prose strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.article-prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 1px 0 1px 25px;
+  margin: 32px 0;
+  color: #d0c5b2;
+}
+.article-prose code {
+  font-size: 0.84em;
+  background: #20201e;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+.article-prose pre {
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 24px;
+  overflow-x: auto;
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  margin: 29px 0;
+  white-space: pre;
+  overflow-wrap: normal;
+}
+.article-prose pre code {
+  font-size: inherit;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+.article-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 22px;
+  margin: 30px 0;
+  display: block;
+}
+.article-prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 30px 0;
+  font-size: 15px;
+}
+.article-prose :is(th, td) {
+  padding: 14px 18px;
+  border: 1px solid #33312e;
+  text-align: left;
+}
+.article-prose th {
+  color: var(--foreground);
+  font-weight: 500;
+  background: #181818;
+}
+.article-prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 42px 0;
+}
+.article-end {
+  margin: 65px 0 85px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+.article-end-mark {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  color: var(--accent);
+}
+.article-end p {
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 17px;
+}
+.article-end .text-link {
+  margin-top: 12px;
+  min-height: 44px;
+}
+@media (max-width: 1023px) {
+  .article-row {
+    grid-template-columns: 135px minmax(0, 1fr) 40px;
+    gap: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .writing-section {
+    margin-top: 75px;
+  }
+  .writing-intro {
+    display: block;
+    padding: 14px 0 22px;
+  }
+  .writing-intro h2 {
+    font-size: 30px;
+  }
+  .writing-intro p {
+    font-size: 14px;
+    margin-top: 11px;
+  }
+  .writing-intro .text-link {
+    margin-top: 14px;
+    font-size: 13px;
+  }
+  .writing-empty {
+    gap: 22px;
+    padding: 28px 0;
+  }
+  .writing-empty-mark {
+    font-size: 38px;
+  }
+  .writing-empty p {
+    font-size: 15px;
+  }
+  .writing-empty div > span {
+    font-size: 13px;
+  }
+  .article-row {
+    grid-template-columns: minmax(0, 1fr) 38px;
+    gap: 18px 14px;
+    padding: 27px 0;
+  }
+  .article-row-meta {
+    grid-column: 1/-1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 15px;
+    padding: 0;
+    font-size: 11px;
+  }
+  .article-row-copy h3 {
+    font-size: 23px;
+  }
+  .article-row-copy > p {
+    font-size: 14px;
+  }
+  .article-topics {
+    font-size: 11px;
+  }
+  .blog-page,
+  .article-page {
+    padding-top: 112px;
+  }
+  .blog-header {
+    padding: 40px 0;
+  }
+  .blog-header h1 {
+    font-size: 51px;
+  }
+  .blog-header > p:last-child {
+    font-size: 20px;
+    margin-top: 23px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .blog-articles {
+    min-height: 300px;
+    padding-bottom: 65px;
+  }
+  .blog-page .writing-empty {
+    padding: 30px 0;
+  }
+  .article-header {
+    padding-top: 35px;
+    padding-bottom: 29px;
+  }
+  .article-header h1 {
+    font-size: 39px;
+  }
+  .article-description {
+    font-size: 18px;
+  }
+  .article-byline {
+    gap: 10px 17px;
+    line-height: 1.6;
+  }
+  .article-prose {
+    font-size: 16px;
+    line-height: 1.85;
+    padding-top: 27px;
+  }
+  .article-prose :is(h1, h2) {
+    font-size: 27px;
+  }
+  .article-prose h3 {
+    font-size: 22px;
+  }
+  .article-prose pre {
+    padding: 18px;
+    font-size: 13px;
+    border-radius: 17px;
+  }
+  .article-prose blockquote {
+    padding-left: 18px;
+  }
+  .article-end {
+    margin: 46px 0 60px;
+  }
+}

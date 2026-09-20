@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 const items = [
   { label: "Work", id: "work" },
   { label: "About", id: "about" },
+  { label: "Writing", id: "writing" },
   { label: "Experience", id: "experience" },
   { label: "Contact", id: "contact" },
 ];
@@ -18,6 +19,11 @@ export function NavigationIsland() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
   const button = useRef<HTMLButtonElement>(null);
+  const activeSection = pathname.startsWith("/blog")
+    ? "writing"
+    : pathname.startsWith("/projects")
+      ? "work"
+      : active;
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
@@ -77,9 +83,9 @@ export function NavigationIsland() {
           {items.map((item) => (
             <Link
               key={item.id}
-              href={`/#${item.id}`}
-              className={active === item.id ? "active" : ""}
-              aria-current={active === item.id ? "location" : undefined}
+              href={item.id === "writing" ? "/blog/" : `/#${item.id}`}
+              className={activeSection === item.id ? "active" : ""}
+              aria-current={activeSection === item.id ? "location" : undefined}
               onClick={() => setOpen(false)}
             >
               {item.label}

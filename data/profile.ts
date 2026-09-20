@@ -1,4 +1,4 @@
-/** Personal links stay unset until supplied. Never substitute invented URLs. */
+/** Verified personal links, with optional build-time configuration overrides. */
 export const profile = {
   name: "Prabhas Dama",
   initials: "PD",
@@ -8,9 +8,12 @@ export const profile = {
   description:
     "I build software that turns complicated problems into simple experiences.",
   links: {
-    github: process.env.NEXT_PUBLIC_GITHUB_URL || null,
-    linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || null,
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || null,
+    github:
+      process.env.NEXT_PUBLIC_GITHUB_URL || "https://github.com/PrabhasDama",
+    linkedin:
+      process.env.NEXT_PUBLIC_LINKEDIN_URL ||
+      "https://www.linkedin.com/in/prabhasdama",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "prabhasdama@gmail.com",
     resume: process.env.NEXT_PUBLIC_RESUME_URL || null,
   },
   // TODO: Set your own domain before public launch. Sites preview origin is separate.
