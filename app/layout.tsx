@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/navigation/site-header";
 import { profile } from "@/data/profile";
@@ -56,6 +57,7 @@ export default function RootLayout({
         </a>
         <SiteHeader />
         {children}
+        <Analytics />
       </body>
     </html>
   );
