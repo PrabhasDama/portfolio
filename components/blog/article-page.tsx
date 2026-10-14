@@ -1,55 +1,40 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { Footer } from "@/components/sections/footer";
-import { Arrow } from "@/components/ui/primitives";
 import { profile } from "@/data/profile";
 import { formatArticleDate, renderArticle, type Article } from "@/lib/articles";
 
 export function ArticlePage({ article }: { article: Article }) {
   return (
-    <main id="main" className="page-container article-page">
-      <div id="top" />
-      <Link href="/blog/" className="back-link">
-        <ArrowLeft size={16} aria-hidden="true" />
-        All articles
-      </Link>
-      <article className="article-content">
-        <header className="article-header">
+    <main id="main" className="page">
+      <article className="article">
+        <header className="page-header">
           {article.status === "draft" && (
-            <p className="article-draft-notice">
-              Draft preview · Only visible in local development
+            <p className="draft-label">
+              Draft preview, only visible in local development
             </p>
           )}
-          <div className="article-topics">
-            {article.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+          <p className="kicker">
+            <Link href="/blog/">Writing</Link>
+            {article.tags.length > 0 && <> · {article.tags.join(", ")}</>}
+          </p>
           <h1>{article.title}</h1>
-          <p className="article-description">{article.description}</p>
-          <div className="article-byline">
-            <span>{profile.name}</span>
+          <p>{article.description}</p>
+          <p className="byline">
+            {profile.name} ·{" "}
             <time dateTime={article.date}>
               {formatArticleDate(article.date)}
-            </time>
-            <span>{article.readingMinutes} min read</span>
-          </div>
+            </time>{" "}
+            · {article.readingMinutes} min read
+          </p>
         </header>
         <div
-          className="article-prose"
+          className="prose"
           dangerouslySetInnerHTML={{ __html: renderArticle(article.content) }}
         />
-        <div className="article-end">
-          <span className="article-end-mark" aria-hidden="true">
-            pd.
-          </span>
-          <p>Thanks for reading.</p>
-          {profile.links.email && (
-            <a className="text-link" href={`mailto:${profile.links.email}`}>
-              Continue the conversation <Arrow />
-            </a>
-          )}
-        </div>
+        <p className="article-end">
+          Thanks for reading. If you have a question or spot a mistake,{" "}
+          <a href={`mailto:${profile.links.email}`}>email me</a>.
+        </p>
       </article>
       <Footer />
     </main>

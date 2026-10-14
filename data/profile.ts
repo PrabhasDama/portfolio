@@ -6,7 +6,7 @@ export const profile = {
   university: "California State University, Long Beach",
   degree: "B.S. Computer Science",
   description:
-    "I build software that turns complicated problems into simple experiences.",
+    "Prabhas Dama studies computer science at Cal State Long Beach and builds CalTrack, an app for nutrition, groceries, pantry and budget.",
   links: {
     github:
       process.env.NEXT_PUBLIC_GITHUB_URL || "https://github.com/PrabhasDama",

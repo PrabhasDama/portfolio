@@ -1,6 +1,6 @@
 # Prabhas Dama — Portfolio
 
-A dark-first, product-led portfolio built with Next.js 16.3.5, React, TypeScript, Tailwind CSS 4, and Lucide. Content renders on the server and exports to static HTML. The only client components are the navigation and progressive scroll reveals. Motion uses CSS; no animation library or external font requests are needed.
+A text-first portfolio built with Next.js 16.3.5, React and TypeScript. It's set in Newsreader and IBM Plex Mono (self-hosted at build time through `next/font`), follows the system light/dark setting, and ships no client-side JavaScript of its own. Content renders on the server and exports to static HTML.
 
 ## Run locally
 
@@ -18,9 +18,8 @@ The production output is `out/`. Serve that directory with any static host; `nex
 ## Content and configuration
 
 - `data/profile.ts`: name, education, role, contact links and personal domain.
-- `data/projects.ts`: typed project records, capabilities, links, images, and case-study sections. Add/remove a record to update generated project routes and the sitemap.
+- `data/projects.ts`: typed project records, links, images, and case-study sections. Add/remove a record to update generated project routes and the sitemap.
 - `data/experience.ts`: experience records and education. Replace the marked placeholder with verified experience; placeholder records never render as jobs.
-- `data/capabilities.ts`: restrained technology categories based on the supplied CalTrack stack.
 - `lib/site.ts`: the actual private preview origin; a supplied `NEXT_PUBLIC_SITE_URL` takes precedence.
 
 Your supplied email, GitHub, and LinkedIn links are configured in `data/profile.ts`. To override them, copy `.env.example` to `.env.local`. All listed variables are public build-time values, so never put secrets there. Rebuild after changing them. Unset project links render as noninteractive “Soon” labels, not broken links. The resume action appears only when a real URL is supplied. The personal domain remains unset; preview metadata uses the registered preview URL.
@@ -39,15 +38,13 @@ Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before p
 
 ## Components
 
-`components/islands` contains Island and native, keyboard-accessible ExpandableIsland. `components/navigation` contains the floating NavigationIsland. `components/projects` contains ProjectIsland, ProjectCaseStudy, CalTrackVisual, and ProjectGallery. `components/sections` composes the homepage. `components/ui` holds tags, links, headings, and the reveal observer.
+`components/sections` composes the homepage. `components/projects` holds the case-study page, the CalTrack receipt graphic and the gallery (which renders only once real images exist). `components/navigation/site-header.tsx` is the plain top bar. `components/ui/primitives.tsx` has the margin-labelled `Section` and a link helper.
 
-The design tokens and responsive styles live in `app/globals.css`. The layout adapts at 360, 767, 1023, and 1600 pixels. On phones the navigation becomes a disclosure menu, the CalTrack narrative precedes its workflow, secondary projects use different compact layouts, capabilities use two columns, and project contents become wrapped inline links.
-
-The navigation compacts on scroll without removing desktop links. Native disclosures open via keyboard, arrows respond on hover, cards lift subtly, and first-load/scroll entrances use opacity and transforms. Reduced-motion preferences disable animation and smooth scrolling. Content remains visible if the reveal enhancement does not run.
+Styles live in `app/globals.css`: colour tokens at the top (with dark-mode overrides), then layout. On wide screens section labels sit in a left margin column; below 860px they fold into the flow, and below 600px rows stack.
 
 ## Screenshots
 
-No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack artwork is a labeled conceptual workflow diagram. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
+No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack graphic is a feature list styled as a grocery receipt, not a screenshot. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
 
 ## Writing articles
 

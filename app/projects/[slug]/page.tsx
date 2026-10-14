@@ -39,7 +39,6 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-  const next = projects[(projects.indexOf(project) + 1) % projects.length];
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -59,7 +58,7 @@ export default async function ProjectPage({ params }: Props) {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <ProjectCaseStudy project={project} nextProject={next} />
+      <ProjectCaseStudy project={project} />
     </>
   );
 }

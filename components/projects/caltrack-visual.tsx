@@ -1,67 +1,52 @@
-import {
-  Apple,
-  CalendarDays,
-  ShoppingBasket,
-  Package,
-  ChartNoAxesCombined,
-  Wallet,
-} from "lucide-react";
+const items = [
+  ["Nutrition targets", "daily"],
+  ["Meal plan + prep", "weekly"],
+  ["Pantry inventory", "live"],
+  ["Grocery list", "auto"],
+  ["Store compare / split cart", "2+"],
+  ["Budget + receipts", "$"],
+  ["Progress + adherence", "trend"],
+];
+const stack = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Supabase",
+  "PostgreSQL",
+  "Vercel",
+  "Resend",
+];
 
-/** A conceptual workflow diagram, deliberately not a product screenshot. */
-export function CalTrackVisual({ compact = false }: { compact?: boolean }) {
+/** CalTrack's feature set, set as a grocery receipt. Not a product screenshot. */
+export function CalTrackReceipt() {
   return (
     <figure
-      className={`caltrack-visual ${compact ? "is-compact" : ""}`}
-      aria-label="CalTrack connects nutrition, meal planning, pantry, groceries, budgeting, and progress."
+      className="receipt"
+      aria-label="What CalTrack covers, styled as a grocery receipt"
     >
-      <div className="workflow-map" aria-hidden="true">
-        <svg className="workflow-connectors" viewBox="0 0 560 410" fill="none">
-          <path
-            d="M280 205 L133 91 M280 205 L426 91 M280 205 L99 205 M280 205 L461 205 M280 205 L143 319 M280 205 L417 319"
-            stroke="currentColor"
-          />
-          <circle
-            cx="280"
-            cy="205"
-            r="106"
-            stroke="currentColor"
-            strokeDasharray="2 8"
-          />
-        </svg>
-        <div className="workflow-core">
-          <span className="caltrack-mark">
-            c<span>t</span>
-            <i />
-          </span>
-        </div>
-        <div className="workflow-node node-nutrition">
-          <Apple size={17} />
-          <span>Nutrition</span>
-        </div>
-        <div className="workflow-node node-meals">
-          <CalendarDays size={17} />
-          <span>Meal planning</span>
-        </div>
-        <div className="workflow-node node-pantry">
-          <Package size={17} />
-          <span>Pantry</span>
-        </div>
-        <div className="workflow-node node-groceries">
-          <ShoppingBasket size={17} />
-          <span>Groceries</span>
-        </div>
-        <div className="workflow-node node-budget">
-          <Wallet size={17} />
-          <span>Budgeting</span>
-        </div>
-        <div className="workflow-node node-progress">
-          <ChartNoAxesCombined size={17} />
-          <span>Progress</span>
-        </div>
+      <div className="receipt-paper">
+        <p className="receipt-store">CalTrack</p>
+        <p className="receipt-center">one kitchen · one app</p>
+        <hr />
+        <ul>
+          {items.map(([name, qty]) => (
+            <li key={name}>
+              <span>{name}</span>
+              <span>{qty}</span>
+            </li>
+          ))}
+        </ul>
+        <hr />
+        <dl>
+          <dt>Stack</dt>
+          <dd>{stack.join(" · ")}</dd>
+        </dl>
+        <hr />
+        <p className="receipt-center">
+          plan → shop → stock → eat → track → adjust
+        </p>
+        <p className="receipt-center receipt-thanks">Thank you, come again</p>
       </div>
-      <figcaption>
-        ONE CONNECTED SYSTEM <span>·</span> CONCEPTUAL WORKFLOW
-      </figcaption>
     </figure>
   );
 }

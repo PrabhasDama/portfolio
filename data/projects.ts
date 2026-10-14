@@ -88,7 +88,7 @@ export const projects: Project[] = [
     category: "Full-stack platform",
     featured: true,
     shortDescription:
-      "Nutrition planning that connects your goals, groceries, and budget.",
+      "A nutrition tracker that grew into meal planning, groceries, pantry and budget.",
     longDescription:
       "A full-stack nutrition, meal planning, grocery, pantry, budgeting, and body-recomposition platform. CalTrack brings the decisions around eating, planning, shopping, and progress into one system.",
     technologies: [
@@ -106,22 +106,22 @@ export const projects: Project[] = [
     sections: [
       {
         id: "overview",
-        title: "The whole picture.",
+        title: "What it is",
         body: [
           "Eating well involves more than tracking a meal. There is the plan, the food already in the pantry, the grocery run, the budget, and the progress over time.",
-          "CalTrack connects these everyday workflows in a single full-stack product.",
+          "CalTrack puts all of that in one app, so a change in one place shows up everywhere it should.",
         ],
       },
       {
         id: "problem",
-        title: "One goal. Too many disconnected tools.",
+        title: "The problem",
         body: [
           "Nutrition apps often separate meal planning, grocery shopping, pantry inventory, nutrition tracking, and budgeting. Those are closely related decisions, but the information often lives in different places.",
         ],
       },
       {
         id: "approach",
-        title: "Connect the routine.",
+        title: "How it works",
         body: [
           "CalTrack starts with authentication, onboarding, and personalized nutrition targets. Daily tracking, meal timestamps, saved nutrition labels, and adherence analytics connect day-to-day choices with longer-term goals.",
           "Meal planning and meal-prep workflows sit alongside pantry management, grocery list generation, budget tracking, purchase history, and receipt workflows. Store comparison and split-store carts support the shopping side of the system.",
@@ -129,10 +129,10 @@ export const projects: Project[] = [
       },
       {
         id: "architecture",
-        title: "Built as a full-stack product.",
+        title: "Stack and architecture",
         body: [
-          "The known stack brings together Next.js, React, and TypeScript with Supabase and PostgreSQL. Vercel and Resend are also part of the project.",
-          "Responsive UI, automated testing, and security testing are part of the work. Detailed service boundaries and data-flow diagrams will be added with the engineering write-up.",
+          "It's a Next.js and React app written in TypeScript, with Supabase and PostgreSQL underneath. It deploys on Vercel and sends email through Resend.",
+          "The work also covers a responsive UI, automated tests and security testing. A proper diagram of the services and data flow comes with the engineering write-up.",
         ],
       },
       {
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     category: "Machine learning & data",
     shortDescription: "An exploration of mouse telemetry and machine learning.",
     longDescription:
-      "A mouse telemetry and machine learning project. The full project story is being prepared.",
+      "A project on mouse telemetry and machine learning. The full write-up is still in progress.",
     featured: false,
     technologies: [],
     links: { live: null, source: null },
@@ -192,9 +192,9 @@ export const projects: Project[] = [
     name: "CampusSync",
     year: null,
     category: null,
-    shortDescription: "A project story to come.",
+    shortDescription: "Write-up in progress.",
     longDescription:
-      "The CampusSync case study is being prepared. Product details and engineering notes will be added here.",
+      "I haven't written up CampusSync yet. Notes on what it does and how it's built will go here.",
     featured: false,
     technologies: [],
     links: { live: null, source: null },
@@ -211,9 +211,9 @@ export const projects: Project[] = [
     name: "SmartWaste",
     year: null,
     category: null,
-    shortDescription: "More from the workbench.",
+    shortDescription: "Write-up in progress.",
     longDescription:
-      "The SmartWaste case study is being prepared. Product details and engineering notes will be added here.",
+      "I haven't written up SmartWaste yet. Notes on what it does and how it's built will go here.",
     featured: false,
     technologies: [],
     links: { live: null, source: null },
@@ -232,30 +232,3 @@ export const getProject = (slug: string) =>
 export const caltrack = projects.find(
   (project) => project.slug === "caltrack",
 )!;
-
-export const caltrackCapabilities = [
-  {
-    title: "Nutrition, with context.",
-    summary: "Targets, daily tracking, and progress",
-    body: "Personalized nutrition targets, daily tracking, saved nutrition labels, and meal timestamps. Measurements and progress tracking connect everyday choices with body-recomposition goals.",
-    tags: ["Nutrition targets", "Meal tracking", "Measurements"],
-  },
-  {
-    title: "A plan that becomes a meal.",
-    summary: "Meal planning and pantry awareness",
-    body: "Meal planning, meal-prep workflows, and pantry management bring the planning and preparation sides of nutrition into the same product.",
-    tags: ["Meal planning", "Pantry", "Meal prep"],
-  },
-  {
-    title: "The grocery run, connected.",
-    summary: "Shopping, store comparison, and budgeting",
-    body: "Grocery list generation, budget tracking, purchase history, and receipt workflows sit alongside store comparison, split-store carts, and live/store pricing work.",
-    tags: ["Grocery lists", "Budgeting", "Store comparison"],
-  },
-  {
-    title: "Room to reflect and adjust.",
-    summary: "Analytics and adherence over time",
-    body: "Analytics, meal-time and adherence analysis, and progress tracking help bring patterns into view across the product.",
-    tags: ["Analytics", "Meal timing", "Adherence"],
-  },
-];

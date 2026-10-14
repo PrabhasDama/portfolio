@@ -1,68 +1,40 @@
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
 
-export function Tag({ children }: { children: ReactNode }) {
-  return <span className="tag">{children}</span>;
-}
-
-export function SectionHeading({
-  number,
-  title,
-  description,
-}: {
-  number: string;
-  title: string;
-  description?: string;
-}) {
-  return (
-    <div className="section-heading">
-      <h2>
-        <span className="section-number">{number}</span>
-        {title}
-      </h2>
-      {description && <p>{description}</p>}
-    </div>
-  );
-}
-
-export function Arrow({ className = "" }: { className?: string }) {
-  return (
-    <ArrowUpRight
-      className={`link-arrow ${className}`}
-      size={18}
-      aria-hidden="true"
-    />
-  );
-}
-
-export function PersonalLink({
+/** A section with its label set in the left margin on wide screens. */
+export function Section({
+  id,
   label,
-  href,
+  children,
   className = "",
 }: {
+  id?: string;
   label: string;
-  href: string | null;
+  children: ReactNode;
   className?: string;
 }) {
-  if (!href)
-    return (
-      <span
-        className={`personal-link is-unavailable ${className}`}
-        aria-label={`${label} — link coming soon`}
-      >
-        {label}
-        <span className="coming-soon">Soon</span>
-      </span>
-    );
+  return (
+    <section id={id} className={`section ${className}`} aria-label={label}>
+      <h2 className="section-label">{label}</h2>
+      <div className="section-body">{children}</div>
+    </section>
+  );
+}
+
+export function OutLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  const external = !href.startsWith("mailto:") && !href.startsWith("/");
   return (
     <a
-      className={`personal-link ${className}`}
       href={href}
-      target={href.startsWith("mailto:") ? undefined : "_blank"}
-      rel="noreferrer"
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
     >
-      {label}
-      <Arrow />
+      {children}
     </a>
   );
 }
