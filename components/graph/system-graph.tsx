@@ -291,7 +291,8 @@ export function SystemGraph({ label = "caltrack / dependency graph" }) {
   const [run, setRun] = useState<Run | null>(null);
   const [step, setStep] = useState(0);
   const [demo, setDemo] = useState(true);
-  const [inView, setInView] = useState(false);
+  // Assume visible until the observer reports otherwise, so playback never depends on it firing.
+  const [inView, setInView] = useState(true);
   const [reduced, setReduced] = useState(false);
   const panel = useRef<HTMLDivElement>(null);
   const demoIndex = useRef(0);

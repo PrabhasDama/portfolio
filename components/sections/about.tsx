@@ -2,10 +2,12 @@ import { Section } from "@/components/ui/primitives";
 import { education } from "@/data/experience";
 
 const stack = [
-  ["languages", "TypeScript"],
-  ["frontend", "Next.js, React"],
-  ["data", "Supabase, PostgreSQL"],
-  ["infra", "Vercel, Resend"],
+  ["languages", "TypeScript, Python, SQL"],
+  ["frontend", "Next.js, React, Tailwind"],
+  ["backend", "FastAPI, Supabase, SQLAlchemy"],
+  ["data", "PostgreSQL, Alembic"],
+  ["testing", "pytest, Vitest, Playwright"],
+  ["infra", "Vercel, GitHub"],
 ];
 
 export function About() {
@@ -18,7 +20,8 @@ export function About() {
             The biggest thing CalTrack taught me is that adding a feature is the
             easy part. Making it behave alongside everything that’s already
             there — the state, the data relationships, the units, the edge cases
-            — is the actual work.
+            — is the actual work. Sentinel pushed the same idea further: if a
+            number can’t be backed up, it shouldn’t be on the screen.
           </p>
           <p>
             I care about the whole product: how it works, how it feels to use,

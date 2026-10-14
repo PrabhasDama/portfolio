@@ -3,6 +3,7 @@ import type { Project } from "@/data/projects";
 import { ProjectGallery } from "@/components/projects/project-gallery";
 import { OutLink, PathCrumb } from "@/components/ui/primitives";
 import { SystemGraph } from "@/components/graph/system-graph";
+import { SentinelSim } from "@/components/graph/sentinel-sim";
 import { Footer } from "@/components/sections/footer";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
@@ -58,6 +59,12 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </dd>
             </>
           )}
+          {project.visibility && (
+            <>
+              <dt>Code</dt>
+              <dd>{project.visibility}</dd>
+            </>
+          )}
         </dl>
       </header>
 
@@ -74,6 +81,16 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                 <figcaption>
                   A simplified model, not the production code. Click a module to
                   see what has to recompute when it changes.
+                </figcaption>
+              </figure>
+            )}
+            {project.slug === "sentinel" && section.id === "approach" && (
+              <figure className="case-graph">
+                <SentinelSim />
+                <figcaption>
+                  Synthetic prices and simplified volatility and order flow; the
+                  gate order and tier thresholds follow Sentinel’s rules. Not
+                  real data and not a performance record.
                 </figcaption>
               </figure>
             )}

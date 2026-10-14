@@ -1,9 +1,18 @@
-import Link from "next/link";
 import { profile } from "@/data/profile";
+import { projects } from "@/data/projects";
 import { OutLink } from "@/components/ui/primitives";
-import { SystemGraph } from "@/components/graph/system-graph";
+import { ProjectSwitcher } from "@/components/sections/project-switcher";
 
 export function Intro() {
+  const items = projects.map((project) => ({
+    slug: project.slug,
+    name: project.name,
+    category: project.category,
+    shortDescription: project.shortDescription,
+    live: project.links.live,
+    source: project.links.source,
+    visibility: project.visibility,
+  }));
   return (
     <section className="intro" aria-labelledby="intro-title">
       <div className="intro-copy">
@@ -15,11 +24,10 @@ export function Intro() {
           <span className="caret" aria-hidden="true" />
         </h1>
         <p className="intro-lede">
-          I build software where one change has to show up everywhere it
-          matters. Right now that’s{" "}
-          <Link href="/projects/caltrack/">CalTrack</Link>: nutrition, meal
-          plans, groceries, pantry and budget, wired together so they stay in
-          sync.
+          I build software that has to stay correct while things change
+          underneath it: a Bitcoin research terminal that would rather say “sit
+          out” than guess, and a nutrition app where one edit has to ripple
+          through the whole week.
         </p>
         <ul className="intro-links">
           <li>
@@ -46,15 +54,9 @@ export function Intro() {
           )}
         </ul>
       </div>
-      <figure className="intro-graph">
-        <SystemGraph />
-        <figcaption>
-          A toy model of how CalTrack’s modules depend on each other. Change one
-          and only what reads from it recomputes, in topological order, each
-          module once and only after all its inputs settle. The dashed feedback
-          edge waits for the next weekly tick instead of looping.
-        </figcaption>
-      </figure>
+      <div className="intro-graph">
+        <ProjectSwitcher items={items} />
+      </div>
     </section>
   );
 }

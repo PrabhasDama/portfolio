@@ -1,6 +1,6 @@
 # Prabhas Dama — Portfolio
 
-A dark, technical portfolio built with Next.js 16.3.5, React and TypeScript, set in IBM Plex Sans and IBM Plex Mono (self-hosted at build time through `next/font`). Content renders on the server and exports to static HTML. The one client component is the interactive CalTrack dependency graph on the homepage and case study.
+A dark, technical portfolio built with Next.js 16.3.5, React and TypeScript, set in IBM Plex Sans and IBM Plex Mono (self-hosted at build time through `next/font`). Content renders on the server and exports to static HTML. The homepage hero is a project switcher with one live visual per project: a replay of Sentinel's signal engine on a synthetic contract, and CalTrack's interactive dependency graph.
 
 ## Run locally
 
@@ -29,22 +29,20 @@ Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before p
 ## Routes
 
 - `/`
+- `/projects/sentinel/`
 - `/projects/caltrack/`
-- `/projects/mouse-telemetry/`
-- `/projects/campussync/`
-- `/projects/smartwaste/`
 - `/blog/` and `/blog/<article-slug>/` for published articles
 - `/sitemap.xml`, `/robots.txt`, and the custom 404 page
 
 ## Components
 
-`components/sections` composes the homepage. `components/graph/system-graph.tsx` is the interactive dependency graph: a toy model of CalTrack's modules where changing one recomputes its dependents in topological order (Kahn's algorithm, longest-path levels), so each module runs once after all its inputs settle and a feedback edge is deferred rather than looped. It autoplays a few changes while on screen until someone clicks a node, and with reduced motion it jumps straight to the result. `components/projects` holds the case-study page and the gallery (which renders only once real images exist). `components/ui/primitives.tsx` has the path-labelled `Section`, the breadcrumb and a link helper.
+`components/sections` composes the homepage; `project-switcher.tsx` is the tabbed hero. `components/graph/sentinel-sim.tsx` replays Sentinel's decision gates (data quality, cushion, evidence, price check) and T15–T1 tier rules on a random-walk contract generated in the browser; it is labelled synthetic because Sentinel's data-rights rules forbid redistributing real market data. `components/graph/system-graph.tsx` is CalTrack's dependency graph: changing a module recomputes its dependents in topological order (Kahn's algorithm, longest-path levels), so each runs once after all its inputs settle and the feedback edge is deferred rather than looped. Both autoplay until someone interacts and respect reduced motion. `components/projects` holds the case-study page and the gallery (which renders only once real images exist). `components/ui/primitives.tsx` has the path-labelled `Section`, the breadcrumb and a link helper.
 
-Styles live in `app/globals.css`, with colour tokens at the top. The graph switches to a taller two-column layout below 700px. Other motion is CSS only: the intro rises in, the caret blinks, link arrows nudge on hover. `prefers-reduced-motion` turns all of it off. The footer shows the build date and short commit hash, set in `next.config.ts`.
+Styles live in `app/globals.css`, with colour tokens at the top. The graph switches to a taller two-column layout below 700px. Other motion is CSS only: the intro rises in, the caret blinks, link arrows nudge on hover. `prefers-reduced-motion` turns all of it off.
 
 ## Screenshots
 
-No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack graph is a labelled simplified model, not production code or a screenshot. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
+No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. Both hero visuals are labelled simplified models, not production code, screenshots or performance records. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
 
 ## Writing articles
 
