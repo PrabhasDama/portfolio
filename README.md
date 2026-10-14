@@ -42,6 +42,8 @@ Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before p
 
 Styles live in `app/globals.css`: colour tokens at the top (with dark-mode overrides), then layout. On wide screens section labels sit in a left margin column; below 860px they fold into the flow, and below 600px rows stack.
 
+Motion is CSS and SVG only: the intro rises in, the CalTrack underline draws itself, the receipt prints (on load on desktop, on scroll on phones where `animation-timeline` is supported), and a token travels the loop diagram on the case study. `prefers-reduced-motion` turns all of it off. The footer shows the build date and short commit hash, set in `next.config.ts`.
+
 ## Screenshots
 
 No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack graphic is a feature list styled as a grocery receipt, not a screenshot. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.

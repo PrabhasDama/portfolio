@@ -25,9 +25,13 @@ export function SelectedWork() {
             shopping list.
           </p>
           <p className="feature-links">
-            <Link href="/projects/caltrack/">Case study →</Link>
+            <Link href="/projects/caltrack/">
+              Case study <span className="arrow">→</span>
+            </Link>
             {essay && (
-              <Link href={`/blog/${essay.slug}/`}>How it grew (essay) →</Link>
+              <Link href={`/blog/${essay.slug}/`}>
+                How it grew (essay) <span className="arrow">→</span>
+              </Link>
             )}
           </p>
         </div>

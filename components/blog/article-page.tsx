@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { Footer } from "@/components/sections/footer";
+import { PathCrumb } from "@/components/ui/primitives";
 import { profile } from "@/data/profile";
-import { formatArticleDate, renderArticle, type Article } from "@/lib/articles";
+import { renderArticle, type Article } from "@/lib/articles";
 
 export function ArticlePage({ article }: { article: Article }) {
   return (
@@ -13,18 +13,23 @@ export function ArticlePage({ article }: { article: Article }) {
               Draft preview, only visible in local development
             </p>
           )}
-          <p className="kicker">
-            <Link href="/blog/">Writing</Link>
-            {article.tags.length > 0 && <> · {article.tags.join(", ")}</>}
-          </p>
+          <PathCrumb
+            parts={[
+              ["writing", "/blog/"],
+              [article.slug, `/blog/${article.slug}/`],
+            ]}
+          />
           <h1>{article.title}</h1>
           <p>{article.description}</p>
           <p className="byline">
-            {profile.name} ·{" "}
-            <time dateTime={article.date}>
-              {formatArticleDate(article.date)}
-            </time>{" "}
+            {profile.name} · <time dateTime={article.date}>{article.date}</time>{" "}
             · {article.readingMinutes} min read
+            {article.tags.map((tag) => (
+              <span key={tag} className="tag">
+                {" "}
+                #{tag.toLowerCase()}
+              </span>
+            ))}
           </p>
         </header>
         <div

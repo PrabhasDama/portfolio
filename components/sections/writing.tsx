@@ -13,7 +13,9 @@ export function Writing() {
         <WritingEmptyState />
       )}
       <p className="more-link">
-        <Link href="/blog/">All writing →</Link>
+        <Link href="/blog/">
+          All writing <span className="arrow">→</span>
+        </Link>
       </p>
     </Section>
   );

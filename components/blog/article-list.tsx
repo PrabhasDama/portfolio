@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatArticleDate, type Article } from "@/lib/articles";
+import { type Article } from "@/lib/articles";
 
 export function ArticleList({ articles }: { articles: Article[] }) {
   return (
@@ -8,7 +8,7 @@ export function ArticleList({ articles }: { articles: Article[] }) {
         <li key={article.slug}>
           <Link href={`/blog/${article.slug}/`}>
             <time className="row-meta" dateTime={article.date}>
-              {formatArticleDate(article.date)}
+              {article.date}
             </time>
             <span className="row-title">{article.title}</span>
             <span className="row-desc">

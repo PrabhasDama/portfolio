@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { CalTrackReceipt } from "@/components/projects/caltrack-visual";
 import { ProjectGallery } from "@/components/projects/project-gallery";
-import { OutLink } from "@/components/ui/primitives";
+import { OutLink, PathCrumb } from "@/components/ui/primitives";
+import { LoopDiagram } from "@/components/projects/loop-diagram";
 import { Footer } from "@/components/sections/footer";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
@@ -11,14 +12,27 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
   return (
     <main id="main" className="page">
       <header className="page-header case-header">
-        <p className="kicker">
-          <Link href="/#work">Work</Link>
-          {project.category && <> · {project.category}</>}
-          {project.year && <> · {project.year}</>}
-        </p>
+        <PathCrumb
+          parts={[
+            ["work", "/#work"],
+            [project.slug, `/projects/${project.slug}/`],
+          ]}
+        />
         <h1>{project.name}</h1>
         <p>{project.longDescription}</p>
         <dl className="case-facts">
+          {project.category && (
+            <>
+              <dt>Type</dt>
+              <dd>{project.category}</dd>
+            </>
+          )}
+          {project.year && (
+            <>
+              <dt>Year</dt>
+              <dd>{project.year}</dd>
+            </>
+          )}
           {project.technologies.length > 0 && (
             <>
               <dt>Stack</dt>
@@ -61,6 +75,9 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             {section.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            {project.slug === "caltrack" && section.id === "problem" && (
+              <LoopDiagram />
+            )}
           </section>
         ))}
         {pending.length > 0 && (
@@ -79,7 +96,9 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         )}
         <ProjectGallery project={project} />
         <p className="more-link">
-          <Link href="/#work">← All work</Link>
+          <Link href="/#work">
+            <span className="arrow arrow-back">←</span> All work
+          </Link>
         </p>
       </div>
       <Footer />
