@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/navigation/site-header";
 import { profile } from "@/data/profile";
 import { siteUrl, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
-const serif = Newsreader({
+const sans = IBM_Plex_Sans({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-serif",
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
 });
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -42,18 +41,15 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
 };
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3efe6" },
-    { media: "(prefers-color-scheme: dark)", color: "#16140f" },
-  ],
-  colorScheme: "light dark",
+  themeColor: "#0b0c0b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content

@@ -5,13 +5,13 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link href="/" className="site-name">
-        Prabhas Dama
+        <span aria-hidden="true">&gt;</span> prabhas.dama
       </Link>
       <nav aria-label="Main navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/blog/">Writing</Link>
-        <Link href="/#about">About</Link>
-        <a href={`mailto:${profile.links.email}`}>Email</a>
+        <Link href="/#work">work</Link>
+        <Link href="/blog/">writing</Link>
+        <Link href="/#about">about</Link>
+        <a href={`mailto:${profile.links.email}`}>email</a>
       </nav>
     </header>
   );

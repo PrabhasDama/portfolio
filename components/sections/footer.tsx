@@ -6,9 +6,13 @@ export function Footer() {
     <footer className="footer">
       <p>© {new Date().getFullYear()} Prabhas Dama</p>
       <p>
-        {built && <>built {built}</>}
-        {commit && <> from {commit}</>}
-        {built && " · "}Newsreader + Plex Mono · Next.js
+        {built && <>build {built}</>}
+        {commit && (
+          <>
+            {" "}
+            · <span className="hash">{commit}</span>
+          </>
+        )}
       </p>
       <a href="#main">
         top <span className="arrow arrow-up">↑</span>

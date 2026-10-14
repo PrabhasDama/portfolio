@@ -1,6 +1,6 @@
 # Prabhas Dama — Portfolio
 
-A text-first portfolio built with Next.js 16.3.5, React and TypeScript. It's set in Newsreader and IBM Plex Mono (self-hosted at build time through `next/font`), follows the system light/dark setting, and ships no client-side JavaScript of its own. Content renders on the server and exports to static HTML.
+A dark, technical portfolio built with Next.js 16.3.5, React and TypeScript, set in IBM Plex Sans and IBM Plex Mono (self-hosted at build time through `next/font`). Content renders on the server and exports to static HTML. The one client component is the interactive CalTrack dependency graph on the homepage and case study.
 
 ## Run locally
 
@@ -38,15 +38,13 @@ Search indexing is disabled until `NEXT_PUBLIC_SITE_URL` is configured. Before p
 
 ## Components
 
-`components/sections` composes the homepage. `components/projects` holds the case-study page, the CalTrack receipt graphic and the gallery (which renders only once real images exist). `components/navigation/site-header.tsx` is the plain top bar. `components/ui/primitives.tsx` has the margin-labelled `Section` and a link helper.
+`components/sections` composes the homepage. `components/graph/system-graph.tsx` is the interactive dependency graph: a toy model of CalTrack's modules where changing one recomputes its dependents in topological order (Kahn's algorithm, longest-path levels), so each module runs once after all its inputs settle and a feedback edge is deferred rather than looped. It autoplays a few changes while on screen until someone clicks a node, and with reduced motion it jumps straight to the result. `components/projects` holds the case-study page and the gallery (which renders only once real images exist). `components/ui/primitives.tsx` has the path-labelled `Section`, the breadcrumb and a link helper.
 
-Styles live in `app/globals.css`: colour tokens at the top (with dark-mode overrides), then layout. On wide screens section labels sit in a left margin column; below 860px they fold into the flow, and below 600px rows stack.
-
-Motion is CSS and SVG only: the intro rises in, the CalTrack underline draws itself, the receipt prints (on load on desktop, on scroll on phones where `animation-timeline` is supported), and a token travels the loop diagram on the case study. `prefers-reduced-motion` turns all of it off. The footer shows the build date and short commit hash, set in `next.config.ts`.
+Styles live in `app/globals.css`, with colour tokens at the top. The graph switches to a taller two-column layout below 700px. Other motion is CSS only: the intro rises in, the caret blinks, link arrows nudge on hover. `prefers-reduced-motion` turns all of it off. The footer shows the build date and short commit hash, set in `next.config.ts`.
 
 ## Screenshots
 
-No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack graphic is a feature list styled as a grocery receipt, not a screenshot. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
+No fictional product screenshots, outcomes, usage metrics, employers, or awards are included. The CalTrack graph is a labelled simplified model, not production code or a screenshot. Add real assets under `public/projects/<slug>/` and populate `images` with `{ src, alt, width, height, caption? }`. ProjectGallery uses `next/image`, lazy loading, intrinsic dimensions, and responsive sizes. Since this is a static export, supply appropriately compressed WebP/AVIF images; on-demand Next image optimization is disabled.
 
 ## Writing articles
 

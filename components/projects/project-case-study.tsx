@@ -1,9 +1,8 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
-import { CalTrackReceipt } from "@/components/projects/caltrack-visual";
 import { ProjectGallery } from "@/components/projects/project-gallery";
 import { OutLink, PathCrumb } from "@/components/ui/primitives";
-import { LoopDiagram } from "@/components/projects/loop-diagram";
+import { SystemGraph } from "@/components/graph/system-graph";
 import { Footer } from "@/components/sections/footer";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
@@ -62,12 +61,6 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </dl>
       </header>
 
-      {project.slug === "caltrack" && (
-        <div className="case-receipt">
-          <CalTrackReceipt />
-        </div>
-      )}
-
       <div className="case-body">
         {written.map((section) => (
           <section key={section.id} id={section.id} className="case-section">
@@ -76,7 +69,13 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               <p key={paragraph}>{paragraph}</p>
             ))}
             {project.slug === "caltrack" && section.id === "problem" && (
-              <LoopDiagram />
+              <figure className="case-graph">
+                <SystemGraph label="caltrack / how the modules connect" />
+                <figcaption>
+                  A simplified model, not the production code. Click a module to
+                  see what has to recompute when it changes.
+                </figcaption>
+              </figure>
             )}
           </section>
         ))}

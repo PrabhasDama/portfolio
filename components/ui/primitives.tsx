@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
-/** A section with its label set in the left margin on wide screens. */
+/** A page section headed by a path-style label and a hairline rule. */
 export function Section({
   id,
   label,
@@ -16,10 +16,10 @@ export function Section({
   return (
     <section id={id} className={`section ${className}`} aria-label={label}>
       <h2 className="section-label">
-        <span aria-hidden="true">{"// "}</span>
+        <span aria-hidden="true">/</span>
         {label.toLowerCase()}
       </h2>
-      <div className="section-body">{children}</div>
+      {children}
     </section>
   );
 }
@@ -27,14 +27,17 @@ export function Section({
 export function OutLink({
   href,
   children,
+  className,
 }: {
   href: string;
   children: ReactNode;
+  className?: string;
 }) {
   const external = !href.startsWith("mailto:") && !href.startsWith("/");
   return (
     <a
       href={href}
+      className={className}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
     >
