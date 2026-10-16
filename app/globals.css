@@ -18,7 +18,9 @@
   color-scheme: dark;
 }
 
+/* In-page jumps glide; data-scroll-behavior on <html> keeps route changes instant. */
 html {
+  scroll-behavior: smooth;
   scroll-padding-top: 24px;
 }
 body {
@@ -148,7 +150,8 @@ a:hover .arrow-up {
 .site-header[data-scrolled="true"] {
   border-bottom-color: var(--line);
 }
-.site-header[data-hidden="true"]:not(:focus-within) {
+/* :focus-visible, not :focus-within: a clicked link keeps focus but shouldn't pin the header. */
+.site-header[data-hidden="true"]:not(:has(:focus-visible)) {
   translate: 0 -100%;
 }
 .site-header-inner {
@@ -1492,6 +1495,9 @@ a:hover .arrow-up {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
